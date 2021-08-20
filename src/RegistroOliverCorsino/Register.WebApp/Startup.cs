@@ -45,13 +45,23 @@ namespace WebApp
                     (sqlServerDbContextOptionsBuilder) => sqlServerDbContextOptionsBuilder.MigrationsAssembly("Boundaries.Persistence")));
 
             AddRepositoriesScoped(services);
-            
+
             AddRulesScoped(services);
         }
 
-        private void AddRepositoriesScoped(IServiceCollection services) => services.AddScoped<IUserRepository, UserRepository>();
+        private void AddRepositoriesScoped(IServiceCollection services)
+        {
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IEducationLevelRepository, EducationLevelRepository>();
+            services.AddScoped<IContactInformationTypeRepository, ContactInformationTypeRepository>();
+        }
 
-        private void AddRulesScoped(IServiceCollection services) => services.AddScoped<UserRules>();
+        private void AddRulesScoped(IServiceCollection services)
+        {
+            services.AddScoped<UserRules>();
+            services.AddScoped<EducationLevelRules>();
+            services.AddScoped<ContactInformationTypeRules>();
+        }
 
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

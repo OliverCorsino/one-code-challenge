@@ -4,7 +4,7 @@ using Core.Models;
 namespace Boundaries.Persistence.Repositories
 {
     /// <inheritdoc cref="GenericRepository{T}"/>
-    public sealed class UserRepository : GenericRepository<User>, IUserRepository
+    public sealed class EducationLevelRepository : GenericRepository<EducationLevel>, IEducationLevelRepository
     {
         private RegistrationDbContext _registrationDbContext;
 
@@ -12,6 +12,6 @@ namespace Boundaries.Persistence.Repositories
         /// Initializes a new instance of a UserRepository class.
         /// </summary>
         /// <param name="registrationDbContext">Represents the registration DB context.</param>
-        public UserRepository(RegistrationDbContext registrationDbContext) : base(registrationDbContext) => _registrationDbContext = registrationDbContext;
+        public EducationLevelRepository(RegistrationDbContext registrationDbContext) : base(registrationDbContext) => _registrationDbContext = registrationDbContext;
     }
 }

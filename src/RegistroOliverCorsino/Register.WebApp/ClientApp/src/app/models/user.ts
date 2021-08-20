@@ -1,6 +1,6 @@
 import { ContactInformation } from './contact-information';
 export interface User {
-  id: string;
+  id: number;
   identificationNumber: string;
   name: string;
   lastName: string;

@@ -8,10 +8,10 @@
   </div>
   <div class="col-8">
     <h1>Sobre ti</h1>
-    <div>
+    <div class="mt-4">
       <form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
-        <label class="form-label">¿Cuáles son tus datos? *</label>
-        <div class="row d-flex justify-content-between">
+        <h5 class="form-label mt-2">¿Cuáles son tus datos? *</h5>
+        <div class="row d-flex justify-content-between mb-2">
           <div class="col-6">
             <label for="name" class="form-label">Nombre(s)</label>
             <input type="text" class="form-control" formControlName="name" placeholder="Ingresa tu(s) nombre(s)">
@@ -31,7 +31,7 @@
             </div>
           </div>
         </div>
-        <div class="row d-flex justify-content-between">
+        <div class="row d-flex justify-content-between mb-2">
           <div class="col-6">
             <label for="dateOfBirth" class="form-label">Fecha de nacimiento</label>
             <input type="date" class="form-control" formControlName="dateOfBirth"
@@ -39,29 +39,29 @@
 
             <div class="form-label text-danger mt-2" *ngIf="userInfoForm.controls['dateOfBirth'].invalid &&
             (userInfoForm.controls['dateOfBirth'].dirty || userInfoForm.controls['dateOfBirth'].touched)">
-              ¡El nombre ingresado no es válido!
+              ¡La fecha de nacimiento ingresada no es válida!
             </div>
           </div>
           <div class="col-6">
             <label for="educationLevel" class="form-label">Formación académica</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Selecciona una opción</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="form-select" formControlName="educationLevel">
+              <option [ngValue]="0">Selecciona tu formación</option>
+              <option *ngFor="let educationLevel of educationLevels" [ngValue]="educationLevel.id">
+                {{ educationLevel.description }}
+              </option>
             </select>
 
             <div class="form-label text-danger mt-2" *ngIf="userInfoForm.controls['educationLevel'].invalid &&
             (userInfoForm.controls['educationLevel'].dirty || userInfoForm.controls['educationLevel'].touched)">
-              ¡El apellido ingresado no es válido!
+              ¡La formación académica seleccionada no es válida!
             </div>
           </div>
         </div>
-        <div class="row d-flex justify-content-between">
-          <label class="form-label">¿Cómo podemos contactarte? *</label>
-          <button type="button" class="btn btn-outline-info" (click)="addContactInfo()">Agregar</button>
+        <div class="row d-flex justify-content-between mt-3 mb-3">
+          <h5 class="form-label mt-2">¿Cómo podemos contactarte? *</h5>
+          <button type="button" class="btn btn-outline-info" (click)="openModal()">Agregar</button>
         </div>
-        <div class="col-8">
+        <div class="mt-2d-flex flex-column bd-highlight">
           <table class="table">
             <thead>
               <tr>
@@ -71,15 +71,14 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
+                <td>1</td>
                 <td>Mark</td>
               </tr>
             </tbody>
           </table>
 
-          <div class="form-label text-danger mt-2" *ngIf="userInfoForm.controls['educationLevel'].invalid &&
-            (userInfoForm.controls['educationLevel'].dirty || userInfoForm.controls['educationLevel'].touched)">
-            ¡El apellido ingresado no es válido!
+          <div class="form-label text-danger mt-2" *ngIf="displayContactInformationError">
+            ¡Debe de agregar por lo menos una forma de contacto!
           </div>
         </div>
         <div class="d-flex justify-content-between">

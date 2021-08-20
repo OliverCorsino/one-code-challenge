@@ -22,7 +22,7 @@ namespace Core.Rules
         /// Retrieves an user from the database if it exists, otherwise returns nothing.
         /// </summary>
         /// <param name="identificationNumber">Represents the user identification number you are looking for.</param>
-        /// <returns>an user from the database if it exists, otherwise returns nothing.</returns>
+        /// <returns>An user from the database if it exists, otherwise returns nothing.</returns>
         public async Task<User> GetUserByIdentificationNumber(string identificationNumber)
         {
             Requires.NotNullOrEmpty(identificationNumber, nameof(identificationNumber));

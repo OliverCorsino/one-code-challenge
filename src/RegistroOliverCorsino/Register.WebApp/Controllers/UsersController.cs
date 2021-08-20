@@ -8,7 +8,7 @@ namespace WebApp.Controllers
 {
     [Route("api/users")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly UserRules _userRules;
 
@@ -16,11 +16,13 @@ namespace WebApp.Controllers
         /// Initializes a new instance of UsersController class.
         /// </summary>
         /// <param name="userRules">Represents the object that will handle the user business rule.</param>
-        public UserController(UserRules userRules)
-        {
-            _userRules = userRules;
-        }
+        public UsersController(UserRules userRules) => _userRules = userRules;
 
+        /// <summary>
+        /// Retrieves an user from the database if it exists, otherwise returns nothing.
+        /// </summary>
+        /// <param name="identificationNumber">Represents the user identification number you are looking for.</param>
+        /// <returns>An user from the database if it exists, otherwise returns nothing.</returns>
         [HttpGet("{identificationNumber}")]
         public async Task<ActionResult<User>> GetUserByIdentificationNumber(string identificationNumber)
         {

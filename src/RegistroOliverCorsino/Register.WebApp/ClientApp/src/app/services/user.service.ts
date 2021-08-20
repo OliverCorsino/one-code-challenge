@@ -8,12 +8,12 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  restisterUrl = `${environment.apiUrl}/users`;
+  private userUrl = `${environment.apiUrl}/users`;
 
   constructor(private http: HttpClient) { }
 
   validateIdentificationNumber(identificationNumber: string) {
-    return this.http.get<User>(`${this.restisterUrl}/${identificationNumber}`);
+    return this.http.get<User>(`${this.userUrl}/${identificationNumber}`);
   }
 
 }

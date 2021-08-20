@@ -19,19 +19,24 @@ namespace Register.Core.Models
         public int RoleId { get; set; }
 
         /// <summary>
-        /// Represents an user's first name.
+        /// Represents which role an user has.
         /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Represents an user's first lastname.
-        /// </summary>
-        public string Lastname { get; set; }
+        public int EducationLevelId { get; set; }
 
         /// <summary>
         /// Represents an user's personal identification number.
         /// </summary>
         public string IdentificationNumber { get; set; }
+
+        /// <summary>
+        /// Represents an user's first name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Represents an user's last name.
+        /// </summary>
+        public string LastName { get; set; }
 
         /// <summary>
         /// Represents when an user was born.
@@ -47,6 +52,11 @@ namespace Register.Core.Models
         /// Represents the relationship between the <see cref="User"/> entity and <see cref="Role"/> entity.
         /// </summary>
         public Role Role { get; set; }
+
+        /// <summary>
+        /// Represents the relationship between the <see cref="User"/> entity and <see cref="EducationLevel"/> entity.
+        /// </summary>
+        public EducationLevel EducationLevel { get; set; }
 
         /// <summary>
         /// Represents the relationship between the <see cref="User"/> entity and <see cref="ContactInformation"/> entity.

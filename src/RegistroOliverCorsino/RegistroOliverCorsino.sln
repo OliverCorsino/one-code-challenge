@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Register.WebApp", "Register.WebApp\Register.WebApp.csproj", "{929399B9-DF44-4DA4-8FA3-516F60C3B910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "Register.WebApp\WebApp.csproj", "{929399B9-DF44-4DA4-8FA3-516F60C3B910}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Register.Core", "Register.Core\Register.Core.csproj", "{37A3ADCE-EAB9-4288-8DA0-821FFC5EAA04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Register.Core\Core.csproj", "{37A3ADCE-EAB9-4288-8DA0-821FFC5EAA04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

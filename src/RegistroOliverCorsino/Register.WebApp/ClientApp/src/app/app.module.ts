@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
-import { RegisterComponent } from './components/register/register.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 import { RequestsComponent } from './components/requests/requests.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { UserService } from './services/user.service';
@@ -15,7 +15,7 @@ import { UserService } from './services/user.service';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    RegisterComponent,
+    RegistrationComponent,
     AboutComponent,
     RequestsComponent
   ],
@@ -24,7 +24,7 @@ import { UserService } from './services/user.service';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: RegisterComponent },
+      { path: '', component: RegistrationComponent },
       { path: 'about', component: AboutComponent },
       { path: 'requests', component: RequestsComponent },
     ])

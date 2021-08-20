@@ -1,17 +1,19 @@
-import { UserService } from './../../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html'
+  templateUrl: './registration.component.html'
 })
-export class RegisterComponent implements OnInit {
+export class RegistrationComponent implements OnInit {
 
   registerForm!: FormGroup;
   currentIdentificationNumber: string;
   displayInfoMessage = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.buildForm();
@@ -20,7 +22,12 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.currentIdentificationNumber = this.registerForm.controls['identificationNumber'].value;
     this.userService.validateIdentificationNumber(this.currentIdentificationNumber).subscribe((result) => {
-      result ? this.displayInfoMessage = true : this.displayInfoMessage = false;
+      if (result) {
+        this.displayInfoMessage = true;
+      } else {
+        this.displayInfoMessage = false;
+        this.router.navigate(['/about']);
+      }
     });
   }
 

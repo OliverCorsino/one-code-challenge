@@ -1,3 +1,93 @@
-<p>
-  about works!
-</p>
+<div class="row col-12">
+  <div class="col-4">
+    <h5>Cuéntanos</h5>
+    <h2>Un poco más.</h2>
+    <label>
+      Esto nos ayudará a saber cuál es la posición perfecta para que colabores con nosotros.
+    </label>
+  </div>
+  <div class="col-8">
+    <h1>Sobre ti</h1>
+    <div>
+      <form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
+        <label class="form-label">¿Cuáles son tus datos? *</label>
+        <div class="row d-flex justify-content-between">
+          <div class="col-6">
+            <label for="name" class="form-label">Nombre(s)</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Ingresa tu(s) nombre(s)">
+
+            <div class="form-label text-danger mt-2" *ngIf="userInfoForm.controls['name'].invalid &&
+            (userInfoForm.controls['name'].dirty || userInfoForm.controls['name'].touched)">
+              ¡El nombre ingresado no es válido!
+            </div>
+          </div>
+          <div class="col-6">
+            <label for="lastName" class="form-label">Apellido(s)</label>
+            <input type="text" class="form-control" formControlName="lastName" placeholder="Ingresa tu(s) apellidos(s)">
+
+            <div class="form-label text-danger mt-2" *ngIf="userInfoForm.controls['lastName'].invalid &&
+            (userInfoForm.controls['lastName'].dirty || userInfoForm.controls['lastName'].touched)">
+              ¡El apellido ingresado no es válido!
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+          <div class="col-6">
+            <label for="dateOfBirth" class="form-label">Fecha de nacimiento</label>
+            <input type="date" class="form-control" formControlName="dateOfBirth"
+              placeholder="Selecciona tu fecha de nacimiento">
+
+            <div class="form-label text-danger mt-2" *ngIf="userInfoForm.controls['dateOfBirth'].invalid &&
+            (userInfoForm.controls['dateOfBirth'].dirty || userInfoForm.controls['dateOfBirth'].touched)">
+              ¡El nombre ingresado no es válido!
+            </div>
+          </div>
+          <div class="col-6">
+            <label for="educationLevel" class="form-label">Formación académica</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Selecciona una opción</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+
+            <div class="form-label text-danger mt-2" *ngIf="userInfoForm.controls['educationLevel'].invalid &&
+            (userInfoForm.controls['educationLevel'].dirty || userInfoForm.controls['educationLevel'].touched)">
+              ¡El apellido ingresado no es válido!
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+          <label class="form-label">¿Cómo podemos contactarte? *</label>
+          <button type="button" class="btn btn-outline-info" (click)="addContactInfo()">Agregar</button>
+        </div>
+        <div class="col-8">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Vía</th>
+                <th scope="col">Detalle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="form-label text-danger mt-2" *ngIf="userInfoForm.controls['educationLevel'].invalid &&
+            (userInfoForm.controls['educationLevel'].dirty || userInfoForm.controls['educationLevel'].touched)">
+            ¡El apellido ingresado no es válido!
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <button type="button" class="col-4 btn btn-outline-danger btn-lg" (click)="goBack()">Volver más tarde</button>
+          <button type="submit" class="col-4 btn btn-outline-success btn-lg"
+            [disabled]="!userInfoForm.valid">Iniciar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-﻿namespace Register.Core.Models
+﻿namespace Core.Models
 {
     /// <summary>
     /// Represent a base entity with the common information needed across other entities.

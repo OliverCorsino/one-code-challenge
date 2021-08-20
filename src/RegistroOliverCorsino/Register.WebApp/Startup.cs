@@ -1,23 +1,36 @@
+using Boundaries.Persistence;
+using Boundaries.Persistence.Repositories;
+using Core.Boundaries.Persistence;
+using Core.Rules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Register.WebApp
+namespace WebApp
 {
-    public class Startup
+    /// <summary>
+    /// Represents the startup configuration class.
+    /// </summary>
+    public sealed class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        /// <summary>
+        /// Initializes a new instance for WebApp.Api.Startup class.
+        /// </summary>
+        /// <param name="configuration">Represents an <see cref="IConfiguration"/> implementation.</param>
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
+        /// <summary>
+        /// Represents a <see cref="IConfiguration"/> property.
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
@@ -26,9 +39,23 @@ namespace Register.WebApp
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddDbContext<RegistrationDbContext>((options) =>
+                options.UseSqlServer(Configuration.GetConnectionString("RegistrationConnectionString"),
+                    (sqlServerDbContextOptionsBuilder) => sqlServerDbContextOptionsBuilder.MigrationsAssembly("Boundaries.Persistence")));
+
+            AddRepositoriesScoped(services);
+            
+            AddRulesScoped(services);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        private void AddRepositoriesScoped(IServiceCollection services) => services.AddScoped<IUserRepository, UserRepository>();
+
+        private void AddRulesScoped(IServiceCollection services) => services.AddScoped<UserRules>();
+
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

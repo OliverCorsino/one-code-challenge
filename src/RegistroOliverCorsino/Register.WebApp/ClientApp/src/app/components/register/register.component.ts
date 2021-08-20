@@ -8,6 +8,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
+  currentIdentificationNumber: string;
+  displayInfoMessage = false;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
@@ -16,10 +18,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    const identificationNumber = this.registerForm.controls['identificationNumber'].value;
-    this.userService.validateIdentificationNumber(identificationNumber).subscribe((result) => {
-      console.log(result);
+    this.currentIdentificationNumber = this.registerForm.controls['identificationNumber'].value;
+    this.userService.validateIdentificationNumber(this.currentIdentificationNumber).subscribe((result) => {
+      result ? this.displayInfoMessage = true : this.displayInfoMessage = false;
     });
+  }
+
+  goToDetails() {
   }
 
   private buildForm(): void {

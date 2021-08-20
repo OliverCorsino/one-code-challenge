@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Register.Core.Models
+namespace Core.Models
 {
     /// <summary>
     /// Represents who can use the system and perform some action base on its role.
@@ -49,18 +49,18 @@ namespace Register.Core.Models
         public DateTime RegistrationDate { get; set; }
 
         /// <summary>
-        /// Represents the relationship between the <see cref="User"/> entity and <see cref="Role"/> entity.
+        /// Represents the relationship between the <see cref="User"/> entity and <see cref="Models.Role"/> entity.
         /// </summary>
         public Role Role { get; set; }
 
         /// <summary>
-        /// Represents the relationship between the <see cref="User"/> entity and <see cref="EducationLevel"/> entity.
+        /// Represents the relationship between the <see cref="User"/> entity and <see cref="Models.EducationLevel"/> entity.
         /// </summary>
         public EducationLevel EducationLevel { get; set; }
 
         /// <summary>
-        /// Represents the relationship between the <see cref="User"/> entity and <see cref="ContactInformation"/> entity.
+        /// Represents the relationship between the <see cref="User"/> entity and <see cref="Models.ContactInformation"/> entity.
         /// </summary>
-        public ICollection<ContactInformation> ContactInformations { get; set; }
+        public ICollection<ContactInformation> ContactInformation { get; set; }
     }
 }

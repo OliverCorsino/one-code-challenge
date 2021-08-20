@@ -29,6 +29,16 @@
             ¡El número de cédula ingresado no es válido!
           </div>
         </div>
+        <div class="alert alert-info" role="alert" *ngIf="displayInfoMessage">
+          <p>
+            No es posible continuar con el registro porque el documento ya se encuentra registrado en nuestro sistema.
+          </p>
+          <p>
+            Para el ver el detalle de está solicitud haga click <a href="#" (click)="goToDetails()" >aquí</a>
+            o también puede ver la socilicitud haciendo click en la opción "Ver detalle" que se encuentra en la parte
+            inferior izquierda de la pantalla.
+          </p>
+        </div>
         <div class="text-center">
           <button type="submit" class="btn btn-outline-success btn-lg" [disabled]="!registerForm.valid">Iniciar</button>
         </div>

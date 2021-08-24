@@ -16,4 +16,8 @@ export class UserService {
     return this.http.get<User>(`${this.userUrl}/${identificationNumber}`);
   }
 
+  save(user: User) {
+    return this.http.post<User>(this.userUrl, user);
+  }
+
 }

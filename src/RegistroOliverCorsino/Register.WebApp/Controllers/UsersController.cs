@@ -3,6 +3,8 @@ using Core.Rules;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Core.Contracts;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -37,5 +39,35 @@ namespace WebApp.Controllers
                 return BadRequest("There was an error processing your request. Please try again or contact our help desk.");
             }
         }
+
+        /// <summary>
+        /// Saves a new user into the DB
+        /// </summary>
+        /// <param name="userViewModel">Represents the new user added to the system.</param>
+        /// <returns>The saved user.</returns>
+        [HttpPost("")]
+        public async Task<ActionResult<User>> Save(UserViewModel userViewModel)
+        {
+            var user = new User
+            {
+                ContactInformation = userViewModel.ContactInformations,
+                IdentificationNumber = userViewModel.IdentificationNumber,
+                DateOfBirth = userViewModel.DateOfBirth,
+                EducationLevelId = userViewModel.EducationLevelId,
+                LastName = userViewModel.LastName,
+                Name = userViewModel.Name
+            };
+
+            IOperationResult<User> operationResult = await _userRules.Save(user);
+
+            if (operationResult.Success)
+            {
+                return Ok(operationResult.Entity);
+            }
+
+            return BadRequest(operationResult.Message);
+        }
+
+
     }
 }

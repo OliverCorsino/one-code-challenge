@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit {
         this.displayInfoMessage = true;
       } else {
         this.displayInfoMessage = false;
-        this.router.navigate(['/about']);
+        this.router.navigate(['/users', {identificationNumber: this.currentIdentificationNumber}]);
       }
     });
   }
@@ -36,7 +36,11 @@ export class RegistrationComponent implements OnInit {
 
   private buildForm(): void {
     this.registerForm = this.formBuilder.group({
-      identificationNumber: new FormControl('', [Validators.required, Validators.minLength(13), Validators.maxLength(13)])
+      identificationNumber: new FormControl('', [
+        Validators.required,
+        Validators.minLength(11),
+        Validators.maxLength(11),
+        Validators.pattern('^[0-9]*$')])
     });
   }
 

@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './components/about/about.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { RequestsComponent } from './components/requests/requests.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -18,7 +18,7 @@ import { UserService } from './services/user.service';
     AppComponent,
     NavMenuComponent,
     RegistrationComponent,
-    AboutComponent,
+    UserInfoComponent,
     RequestsComponent
   ],
   imports: [
@@ -27,7 +27,7 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: RegistrationComponent },
-      { path: 'about', component: AboutComponent },
+      { path: 'users', component: UserInfoComponent },
       { path: 'requests', component: RequestsComponent },
     ])
   ],

@@ -5,8 +5,8 @@ export interface User {
   name: string;
   lastName: string;
   dateOfBirth: Date;
-  educationLevel: string;
+  educationLevelId: number;
   registrationDate: Date;
-  role: string;
+  roleId: number;
   contactInformations: ContactInformation[];
 }
